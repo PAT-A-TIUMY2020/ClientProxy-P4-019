@@ -15,6 +15,67 @@ namespace ClientProxy_P4_019.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MathFault", Namespace="http://schemas.datacontract.org/2004/07/ServiceMtk_P1_20180140019")]
+    [System.SerializableAttribute()]
+    public partial class MathFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PesanField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Kode {
+            get {
+                return this.KodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KodeField, value) != true)) {
+                    this.KodeField = value;
+                    this.RaisePropertyChanged("Kode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Pesan {
+            get {
+                return this.PesanField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PesanField, value) != true)) {
+                    this.PesanField = value;
+                    this.RaisePropertyChanged("Pesan");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Koordinat", Namespace="http://schemas.datacontract.org/2004/07/ServiceMtk_P1_20180140019")]
     [System.SerializableAttribute()]
     public partial class Koordinat : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -79,6 +140,7 @@ namespace ClientProxy_P4_019.ServiceReference1 {
     public interface IMatematika {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatematika/Tambah", ReplyAction="http://tempuri.org/IMatematika/TambahResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(ClientProxy_P4_019.ServiceReference1.MathFault), Action="http://tempuri.org/IMatematika/TambahMathFaultFault", Name="MathFault", Namespace="http://schemas.datacontract.org/2004/07/ServiceMtk_P1_20180140019")]
         int Tambah(int a, int b);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatematika/Tambah", ReplyAction="http://tempuri.org/IMatematika/TambahResponse")]

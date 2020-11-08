@@ -3,8 +3,8 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
-      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/ServiceMtk_P1_20180140019" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMatematika_Tambah_InputMessage">
@@ -12,6 +12,9 @@
   </wsdl:message>
   <wsdl:message name="IMatematika_Tambah_OutputMessage">
     <wsdl:part name="parameters" element="tns:TambahResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMatematika_Tambah_MathFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/ServiceMtk_P1_20180140019" name="detail" element="q1:MathFault" />
   </wsdl:message>
   <wsdl:message name="IMatematika_Kurang_InputMessage">
     <wsdl:part name="parameters" element="tns:Kurang" />
@@ -41,6 +44,7 @@
     <wsdl:operation name="Tambah">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatematika/Tambah" message="tns:IMatematika_Tambah_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatematika/TambahResponse" message="tns:IMatematika_Tambah_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMatematika/TambahMathFaultFault" name="MathFaultFault" message="tns:IMatematika_Tambah_MathFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Kurang">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatematika/Kurang" message="tns:IMatematika_Kurang_InputMessage" />
@@ -69,6 +73,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="MathFaultFault">
+        <soap:fault use="literal" name="MathFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Kurang">
       <soap:operation soapAction="http://tempuri.org/IMatematika/Kurang" style="document" />
